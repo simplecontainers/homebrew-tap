@@ -4,12 +4,12 @@ cask "simplecontainers" do
 
   on_macos do
     on_intel do
-      sha256 "6d90c76933bccd07d2958106a911df479f02185eee5fc645ddc72ec261dfcda7"
+      sha256 "119a58203e188571982ff745213e87e7dcb3189e722f68b88326721dd584757c"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-amd64"
       binary "simplecontainers-cli-0.1.0-darwin-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "f5bb21bbca05f5baf6acad8a8302df779669eff7c09dafab07642e5315f3bd37"
+      sha256 "62e7e0d73cc443315086ddafecd064d13ce54df7c06b71c0b379792a0946321e"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-arm64"
       binary "simplecontainers-cli-0.1.0-darwin-arm64", target: "simplecontainers"
     end
@@ -17,12 +17,12 @@ cask "simplecontainers" do
 
   on_linux do
     on_intel do
-      sha256 "2c6419d408391dd04d50099916280d775138a3177e430bd349e008634be996c2"
+      sha256 "6a9134a8c6e4340f5e11e5a58629b4bf403f4c5caaf1ef6f8af8ec3ea1e1c32a"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-amd64"
       binary "simplecontainers-cli-0.1.0-linux-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "bf37acc5422660ca09e03e6db16bc1e915976899b22484ac5b1a1f036296045b"
+      sha256 "7d94cc1c1e668ee9620c0f221ae5b963c62df0a79867c7ec5d8e9e7bda2b9b87"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-arm64"
       binary "simplecontainers-cli-0.1.0-linux-arm64", target: "simplecontainers"
     end
@@ -38,6 +38,9 @@ cask "simplecontainers" do
 
   postflight do
     system_command "/bin/ln", args: ["-sf", "#{HOMEBREW_PREFIX}/bin/simplecontainers", "#{HOMEBREW_PREFIX}/bin/simple"]
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/simplecontainers"]
+    end
   end
 
   uninstall_postflight do
