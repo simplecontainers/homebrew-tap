@@ -4,12 +4,12 @@ cask "simplecontainers" do
 
   on_macos do
     on_intel do
-      sha256 "abe3c1cbd1b80eda24532dea9637353094c59638618a01df06198583dbc58481"
+      sha256 "e2108e935e206508f998fabc4d04aae9214478a73479f0c9775bcc15461d8884"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-amd64"
       binary "simplecontainers-cli-0.1.0-darwin-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "8599b63ddf2b4b34564f182c0a9ecf01e8c89fdafbdf7386c6a839de9edb6017"
+      sha256 "2f3a599c191b468616a05961f64c70eb77fa8527aee90373910bb1179e0777a9"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-arm64"
       binary "simplecontainers-cli-0.1.0-darwin-arm64", target: "simplecontainers"
     end
@@ -17,12 +17,12 @@ cask "simplecontainers" do
 
   on_linux do
     on_intel do
-      sha256 "d6c6685c70a62d41fc225ff4d89ac1150d6f0b512831c38d33dd7c28098dd47c"
+      sha256 "ca6b55b5c6a86c71f7db6ee63f4e69dca533baf357f39d018f20d63085260bf9"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-amd64"
       binary "simplecontainers-cli-0.1.0-linux-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "2541727fd553943ad380efd4256a6f6eb205663c6de8c8ad97bbba2f1953d20b"
+      sha256 "3f013c25d0f21cf5eef419d54c0d918637f9f3fe05b0202c5fae2ee492f9878e"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-arm64"
       binary "simplecontainers-cli-0.1.0-linux-arm64", target: "simplecontainers"
     end
