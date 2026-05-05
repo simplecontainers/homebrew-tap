@@ -4,27 +4,27 @@ cask "simplecontainers" do
 
   on_macos do
     on_intel do
-      sha256 "b21dd84e0ace74aa2b52d4d884b4fbf7abaefcb7687bfc549b00d77a3c9b92d5"
+      sha256 "9c068fa28c13c44da39c4d1d80d468499acd0ebc88f0f67f7ea2772fb7c31661"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-amd64"
-      binary "simplecontainers-cli-0.1.0-darwin-amd64", target: "cli"
+      binary "simplecontainers-cli-0.1.0-darwin-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "1f941e2e603d925262210e80c36e59a95c4fc256e31e97b01d688f1f8d3db7be"
+      sha256 "b5517e8f7613d2bdefa06d520226363b2dc9a924dbb4a9eccfefa411174dc94f"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-arm64"
-      binary "simplecontainers-cli-0.1.0-darwin-arm64", target: "cli"
+      binary "simplecontainers-cli-0.1.0-darwin-arm64", target: "simplecontainers"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "c6b93664bb045cfcecbd7049f801f3e5eb43060e20890aa27d88479f7fde58b0"
+      sha256 "37a68cbbadb34dbffdec2e38128ab4c24f61787549e376c905b3459971632b26"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-amd64"
-      binary "simplecontainers-cli-0.1.0-linux-amd64", target: "cli"
+      binary "simplecontainers-cli-0.1.0-linux-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "f5f88971ac2f9e2856f125167c34ddd1b034d469332823d176be7c3d3b32344a"
+      sha256 "7d722479a3159e2089378ab6262b9e8ba6335c84a2c52eb4754bad838bcd03bc"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-arm64"
-      binary "simplecontainers-cli-0.1.0-linux-arm64", target: "cli"
+      binary "simplecontainers-cli-0.1.0-linux-arm64", target: "simplecontainers"
     end
   end
 
@@ -34,6 +34,14 @@ cask "simplecontainers" do
 
   livecheck do
     skip "Auto-generated on release."
+  end
+
+  postflight do
+    system_command "/bin/ln", args: ["-sf", "#{HOMEBREW_PREFIX}/bin/simplecontainers", "#{HOMEBREW_PREFIX}/bin/simple"]
+  end
+
+  uninstall_postflight do
+    system_command "/bin/rm", args: ["-f", "#{HOMEBREW_PREFIX}/bin/sc"]
   end
 
   # No zap stanza required
