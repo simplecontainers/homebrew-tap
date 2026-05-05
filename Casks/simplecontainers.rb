@@ -4,12 +4,12 @@ cask "simplecontainers" do
 
   on_macos do
     on_intel do
-      sha256 "4768b66bba6f51fb91a001dff0c375841f277ac76cfa7e65de33e01c4debb58a"
+      sha256 "abe3c1cbd1b80eda24532dea9637353094c59638618a01df06198583dbc58481"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-amd64"
       binary "simplecontainers-cli-0.1.0-darwin-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "3ed2f951b26ac28964a97207132be85209b53d392be2c33506e2351992051d48"
+      sha256 "8599b63ddf2b4b34564f182c0a9ecf01e8c89fdafbdf7386c6a839de9edb6017"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-darwin-arm64"
       binary "simplecontainers-cli-0.1.0-darwin-arm64", target: "simplecontainers"
     end
@@ -17,12 +17,12 @@ cask "simplecontainers" do
 
   on_linux do
     on_intel do
-      sha256 "7fb7cc8e6aa024b6ac1fe5aa1d92caff2b688fb379c9d901bd6f6e7428cebe9a"
+      sha256 "d6c6685c70a62d41fc225ff4d89ac1150d6f0b512831c38d33dd7c28098dd47c"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-amd64"
       binary "simplecontainers-cli-0.1.0-linux-amd64", target: "simplecontainers"
     end
     on_arm do
-      sha256 "d2e4c0ec2b01d403748fe1debc26dd5218d6a9d2b2f8bc89c2eed0cb51252e1f"
+      sha256 "2541727fd553943ad380efd4256a6f6eb205663c6de8c8ad97bbba2f1953d20b"
       url "https://files.simplecontainers.app/cli/rel/#{version}/simplecontainers-cli-#{version}-linux-arm64"
       binary "simplecontainers-cli-0.1.0-linux-arm64", target: "simplecontainers"
     end
@@ -39,12 +39,12 @@ cask "simplecontainers" do
   postflight do
     system_command "/bin/ln", args: ["-sf", "#{HOMEBREW_PREFIX}/bin/simplecontainers", "#{HOMEBREW_PREFIX}/bin/simple"]
     if OS.mac?
-      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/simplecontainers"]
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{HOMEBREW_PREFIX}/bin/simplecontainers"]
     end
   end
 
   uninstall_postflight do
-    system_command "/bin/rm", args: ["-f", "#{HOMEBREW_PREFIX}/bin/sc"]
+    system_command "/bin/rm", args: ["-f", "#{HOMEBREW_PREFIX}/bin/simple"]
   end
 
   # No zap stanza required
